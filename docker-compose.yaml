@@ -1,0 +1,29 @@
+services:
+  postgresql:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: 1234 
+      POSTGRES_DB: decanaria
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: 1234
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_volume:/data/db
+  scrapyspiders:
+    build:
+      context: ./
+
+volumes:
+  postgresql:
+    driver: local
+  mongodb_volume:

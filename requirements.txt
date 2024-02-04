@@ -1,0 +1,4 @@
+twisted==22.10.0
+scrapy==2.7.1
+psycopg2==2.9.5
+pymongo==4.3.3
