@@ -1,6 +1,9 @@
+# Creating service containers
+
 services:
   postgresql:
     image: postgres
+    container_name: postgresql_container
     environment:
       POSTGRES_USER: postgres 
       POSTGRES_PASSWORD: 1234 
@@ -12,6 +15,7 @@ services:
 
   mongodb:
     image: mongo
+    container_name: mongodb_container
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: 1234
@@ -19,11 +23,27 @@ services:
       - 27017:27017
     volumes:
       - mongodb_volume:/data/db
+  
+  redis:
+    image: redis/redis-stack-server
+    container_name: redis_container
+    environment:
+      - REDIS_ARGS="--save 60 500"
+    ports:
+      - 6379:6379
+    volumes:
+    - redis-storage-data:/data/redis
+
   scrapyspiders:
+    container_name: scrapy_spiders_container
     build:
       context: ./
+
+
+# Creating volumes for databases to use
 
 volumes:
   postgresql:
     driver: local
   mongodb_volume:
+  redis-storage-data:

@@ -106,3 +106,6 @@ MONGODB_DATABASE = "decanaria"
 MONGODB_COLLECTION = "raw_collection"
 MONGODB_USERNAME = "mongo"
 MONGODB_PASSWORD = "1234"
+
+# Redis Settings
+REDIS_PORT = 6379
