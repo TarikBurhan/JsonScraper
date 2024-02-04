@@ -21,12 +21,10 @@ class Jobpider(scrapy.Spider):
         """
         yield scrapy.Request(
             url='file:////home/s01.json',
-            #url=r'file:////C:/Users/takos/Desktop/JsonScraper/s01.json',
             callback=self.parse_page,
         )
         yield scrapy.Request(
             url='file:////home/s02.json',
-            #url=r'file:////C:/Users/takos/Desktop/JsonScraper/s02.json',
             callback=self.parse_page,
         )
     
